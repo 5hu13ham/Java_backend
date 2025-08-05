@@ -17,16 +17,16 @@ public class User {
 	
 	private Long id;
 	
-	@Column(nullable = false, unique = true)
+	@Column(name = "username",nullable = false, unique = true)
 	private String username;
 	
-	@Column(nullable = false, unique = true)
+	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 	
-	@Column(nullable = false)
+	@Column(name = "first_name", nullable = false)
 	private String firstName;
 	
-	@Column(nullable = true)
+	@Column(name = "last_name")
 	private String lastName;
 	
 	@Column(nullable = true, unique = true)
@@ -39,9 +39,13 @@ public class User {
 	@Column(nullable = false, updatable = false)
 	private Role role;
 	
-	@Column(nullable = false)
+	@Column(name = "active", nullable = false)
 	private boolean active;
 	
+	@Column(name = "is_deleted")
+	private boolean deleted = false;
+	
+
 	@Column(nullable = false)
 	private String password;
 	
@@ -52,6 +56,16 @@ public class User {
 	@Column
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
+	
+	
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 	
 	
 	public void setUpdatedAt(LocalDateTime updatedAt) {
